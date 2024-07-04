@@ -1,0 +1,39 @@
+python -m pytest --help
+python -m pytest --verbose
+python -m pytest --quiet
+python -m pytest --maxfail=1
+python -m pytest --junit-xml report.xml
+python -m pytest tests/test_accum.py
+python -m pytest tests/test_math.py::test_one_plus_one #to run individual tests
+python -m pytest -k "one" #Notice that it runs tests from both test modules. -k can handle more than substrings. It supports boolean logic with "and", "or", and "not" keywords. For example:
+python -m pytest -m math #after adding mark decorator, mention markers in pytest.ini
+
+------------------------------------------------------------------------
+
+Pytest Plugins:
+ pytest-html --> install --> pip install pytest-html
+ python -m pytest --html=report.html
+
+Python's most popular code coverage tool is called coverage.py
+The pytest-cov plugin is essentially a pytest integration for coverage.py with a few extra goodies. To install pytest-cov, run the following terminal command
+pip install pytest-cov
+python -m pytest --cov=stuff
+python -m pytest --cov=stuff --cov=tests
+python -m pytest --cov=stuff --cov-report html
+
+------------------------------------------------------------------------
+
+
+The third plugin we will cover is pytest-xdist. By default, pytest runs tests one at a time. This is okay for small test suites but it can become very slow for large test suites, especially for feature tests.
+Running tests in parallel is a great way to reduce the total start-to-end execution time for test suites. The pytest-xdist plugin lets you run pytest tests in parallel. To install it, run the following terminal command:
+pip install pytest-xdist
+Using pytest-xdist is simple. Just add the -n option with the number of threads to run. For example, -n 3 will run tests across three parallel threads.
+python -m pytest -n 3
+
+------------------------------------------------------------------------
+
+The last plugin I want to mention by name is pytest-bdd.
+
+------------------------------------------------------------------------
+To call APIs in Python, we will use the requests package. requests is one of the most popular Python packages of all time. It provides a simple API for calling APIs.
+pip install requests
